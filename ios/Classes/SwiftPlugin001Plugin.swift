@@ -24,7 +24,8 @@ public class SwiftPlugin001Plugin: NSObject, FlutterPlugin {
 
       case "start":
         // result("iOS : start")
-        result(1000)
+        // result(1000)
+        self.start(call, result)
 
       case "stop":
         result(999)
@@ -35,5 +36,9 @@ public class SwiftPlugin001Plugin: NSObject, FlutterPlugin {
   }
 
   // Start
+  private func start(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+    print("ios: start... methon()")
+    result(1004)
+  }
 
 }

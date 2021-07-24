@@ -83,13 +83,13 @@ class _MyAppState extends State<MyApp> {
     });
     if (enabled) {
       Plugin001.start().then((int status) {
-        print('[BackgroundFetch] start success 시작 성공 : $status, ${DateTime.now()}');
+        print('[Plugin-001] start success 시작 성공 : $status, ${DateTime.now()}');
       }).catchError((e) {
-        print('[BackgroundFetch] start FAILURE: $e, ${DateTime.now()}');
+        print('[Plugin-001] start FAILURE: $e, ${DateTime.now()}');
       });
     } else {
       Plugin001.stop().then((int status) {
-        print('[BackgroundFetch] stop success 정지 성공 : $status, ${DateTime.now()}');
+        print('[Plugin-001] stop success 정지 성공 : $status, ${DateTime.now()}');
       });
     }
   }
@@ -97,7 +97,7 @@ class _MyAppState extends State<MyApp> {
   // 플러그인 상태 확인
   void _onClickStatus() async {
     String status = await Plugin001.status ?? 'Unknown status';
-    print('[BackgroundFetch] status 상태 : $status, ${DateTime.now()}');
+    print('[Plugin-001] status 상태 : $status, ${DateTime.now()}');
     setState(() {
       _status = status;
     });

@@ -10,11 +10,13 @@ import io.flutter.plugin.common.MethodChannel.Result
 
 /** Plugin001Plugin */
 class Plugin001Plugin: FlutterPlugin, MethodCallHandler {
+
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
   private lateinit var channel : MethodChannel
+
   // channel 을 flutter 와 연결한다.
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "plugin_001")
@@ -22,18 +24,52 @@ class Plugin001Plugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+
+    /*
     if (call.method == "getPlatformVersion") {
       // 원래는 call.method 에서 getPlatformVersion이 오면 result로 systemVersion을 넘겨줘야하는데
       // 생성되는 예제에서는 handle 메소드가 불리면 바로 넘겨주고 있다.
       result.success("Android ${android.os.Build.VERSION.RELEASE}")
     } else if (call.method == "getBmclabVersion") {
       // BMCLAB 상태 확인
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
+      result.success("Android : BMCLAB")
     } else if (call.method == "getStatus") {
       // 상태 확인
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
+      result.success("Android : status is GOOD!")
+    } else if (call.method == "start") {
+      // start
+      result.success("Android : 1004")
+    } else if (call.method == "stop") {
+      // stop
+      result.success("Android : 999")
     } else {
       result.notImplemented()
+    }
+    */
+
+    when (call.method) {
+      "getPlatformVersion" -> {
+        // 원래는 call.method 에서 getPlatformVersion이 오면 result로 systemVersion을 넘겨줘야하는데
+        // 생성되는 예제에서는 handle 메소드가 불리면 바로 넘겨주고 있다.
+        result.success("Android ${android.os.Build.VERSION.RELEASE}")
+      }
+      "getBmclabVersion" -> {
+        // BMCLAB 상태 확인
+        result.success("Android : BMCLAB")
+      }
+      "getStatus" -> {
+        // 상태 확인
+        result.success("Android : status is GOOD!")
+      }
+      "start" -> {
+        // start
+        // result.success(1000)
+        start(call, result)
+      }
+      "stop" -> {
+        // stop
+        result.success(999)
+      }
     }
   }
 
@@ -41,4 +77,11 @@ class Plugin001Plugin: FlutterPlugin, MethodCallHandler {
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
   }
+
+  // start
+  private fun start(@NonNull call: MethodCall, @NonNull result: Result) {
+    print("android: start... methon()")
+    result.success(10004)
+  }
+
 }

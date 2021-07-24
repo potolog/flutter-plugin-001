@@ -5,3 +5,4 @@
 - Method 추가: bmclabVersion, status
 - notification 추가
 - Method 추가: start(), stop()
+- android 용 method 추가

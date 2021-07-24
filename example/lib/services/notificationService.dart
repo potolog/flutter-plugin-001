@@ -66,7 +66,8 @@ class NotificationService extends ChangeNotifier {
   }
 
   // Notification 취소
-  static Future cancelNotification() async{
+  static Future cancelNotification() async {
     await _flutterLocalNotificationsPlugin.cancelAll();
   }
+
 }

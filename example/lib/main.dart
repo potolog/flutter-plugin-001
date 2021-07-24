@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -103,8 +105,7 @@ class _MyAppState extends State<MyApp> {
     });
 
     // Notification 알림
-    NotificationService.initialize();
-    NotificationService.instantNotification('알림', '플러그인 상태 확인', payload: 'payload');
+    notificationShow('알림', '플러그인 상태 확인', payload: 'payload');
   }
 
   // 이벤트 이력 삭제
@@ -116,8 +117,16 @@ class _MyAppState extends State<MyApp> {
     });
 
     // Notification 알림
-    NotificationService.initialize();
-    NotificationService.instantNotification('알림', '이벤트 이력 삭제');
+    notificationShow('알림', '이벤트 이력 삭제');
+  }
+
+  // Notification 설정
+  void notificationShow(String title, String body, {String payload = ''}) {
+    // ios 일 때만, Notification 알림을 한다.
+    if (Platform.isIOS) {
+      NotificationService.initialize();
+      NotificationService.instantNotification(title, body, payload: payload);
+    }
   }
 
   @override

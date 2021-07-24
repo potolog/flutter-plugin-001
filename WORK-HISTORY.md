@@ -6,3 +6,4 @@
 - notification 추가
 - Method 추가: start(), stop()
 - android 용 method 추가
+- 배포용 pubspec.aml 설정

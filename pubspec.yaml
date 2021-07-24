@@ -1,7 +1,9 @@
 name: plugin_001
-description: A new Flutter project.
+description: Flutter plugin-001
 version: 0.0.1
-homepage:
+author: potolog <potolog@naver.com>
+homepage: https://bmclab.kr/
+repository: https://github.com/potolog/flutter-plugin-001
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

@@ -26,6 +26,12 @@ class Plugin001Plugin: FlutterPlugin, MethodCallHandler {
       // 원래는 call.method 에서 getPlatformVersion이 오면 result로 systemVersion을 넘겨줘야하는데
       // 생성되는 예제에서는 handle 메소드가 불리면 바로 넘겨주고 있다.
       result.success("Android ${android.os.Build.VERSION.RELEASE}")
+    } else if (call.method == "getBmclabVersion") {
+      // BMCLAB 상태 확인
+      result.success("Android ${android.os.Build.VERSION.RELEASE}")
+    } else if (call.method == "getStatus") {
+      // 상태 확인
+      result.success("Android ${android.os.Build.VERSION.RELEASE}")
     } else {
       result.notImplemented()
     }

@@ -12,15 +12,28 @@ public class SwiftPlugin001Plugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    switch call.messenger {
+    switch call.method {
       case "getPlatformVersion":
         // 원래는 call.method 에서 getPlatformVersion이 오면 result로 systemVersion을 넘겨줘야하는데
         // 생성되는 예제에서는 handle 메소드가 불리면 바로 넘겨주고 있다.
         result("iOS " + UIDevice.current.systemVersion)
-      case "bmclab":
+      case "getBmclabVersion":
         result("iOS : bmclab")
+      case "getStatus":
+        result("iOS : status")
+
+      case "start":
+        // result("iOS : start")
+        result(1000)
+
+      case "stop":
+        result(999)
+
       default:
         result(FlutterMethodNotImplemented)
     }
   }
+
+  // Start
+
 }
